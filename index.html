@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAS 協作五等級測驗</title>
-    <!-- 引入 Tailwind CSS 樣式庫 -->
+    <title>HAS 人類自主性量表測驗</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hidden { display: none; }
@@ -18,35 +17,66 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans">
-    <div class="max-w-4xl mx-auto">
-        <!-- 標題區 -->
+    <div class="max-w-6xl mx-auto">
         <header class="text-center mb-10">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">HAS 協作五等級：AI 轉型實踐</h1>
-            <p class="text-lg text-gray-600 border-b-2 border-indigo-100 pb-4 inline-block">理解AI協作的五個階段，定位你的 AI 應用深度</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">HAS 人類自主性量表 (Human Agency Scale)</h1>
+            <p class="text-lg text-gray-600 border-b-2 border-indigo-100 pb-4 inline-block">理解人機協作的五個層次，定位你的 AI 應用深度<br><span class="text-sm text-gray-400 mt-2 block">資料來源：《Future of Work with AI Agents》</span></p>
+            
+            <div class="overflow-x-auto mt-8 shadow-lg rounded-2xl border border-gray-200 bg-white text-left">
+                <table class="w-full border-collapse min-w-[900px]">
+                    <thead>
+                        <tr>
+                            <th class="p-4 border-b border-r border-gray-200 bg-white text-black font-bold w-24 text-center">指標</th>
+                            <th class="p-4 border-b border-gray-200 text-center font-bold text-black bg-white w-1/5">HAS H1</th>
+                            <th class="p-4 border-b border-gray-200 text-center font-bold text-black bg-white w-1/5">HAS H2</th>
+                            <th class="p-4 border-b border-gray-200 text-center font-bold text-black bg-white w-1/5">HAS H3</th>
+                            <th class="p-4 border-b border-gray-200 text-center font-bold text-black bg-white w-1/5">HAS H4</th>
+                            <th class="p-4 border-b border-gray-200 text-center font-bold text-black bg-white w-1/5">HAS H5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-4 border-b border-r border-gray-200 bg-white font-bold text-center text-black whitespace-nowrap">描述</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">AI 代理人主導任務執行AI 完全負責任務執行，無需人類參與或僅需極少監督。</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">AI 代理人主導任務執行在少數關鍵點需要人類輸入以改善表現。</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">平等夥伴關係人類與 AI 代理人緊密合作完成任務。</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">人類主導任務執行人類負責主要執行，AI 作為輔助工具。</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">人類完全主導任務執行，AI 協助程度不一。</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border-b border-r border-gray-200 bg-white font-bold text-center text-black whitespace-nowrap">任務分工</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">AI 完全處理，無需你介入。</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">AI 在幾個關鍵點需要你的輸入才能更好執行。</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">你與 AI 一起合作，表現優於單方執行。</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">AI 需要你的輸入才能成功完成任務。</td>
+                            <td class="p-4 border-b border-gray-200 text-sm align-top leading-relaxed text-black bg-white">完全仰賴你的參與完成任務。</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border-r border-gray-200 bg-white font-bold text-center text-black whitespace-nowrap">技術角色</td>
+                            <td class="p-4 border-r border-gray-200 text-center font-bold text-black bg-white" colspan="2">自動化<br><span class="text-sm font-normal text-black mt-1 block">AI 取代人類能力</span></td>
+                            <td class="p-4 text-center font-bold text-black bg-white" colspan="3">增強<br><span class="text-sm font-normal text-black mt-1 block">AI 提升人類能力</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </header>
 
-        <!-- 第一部分：學習區 -->
         <div id="learning-section" class="space-y-8">
-            <!-- 橫向排列的卡片列 - 增加 py-6 避免放大被遮蔽 -->
-            <div class="flex flex-nowrap overflow-x-auto gap-6 py-6 px-4 snap-x" id="level-tabs">
-                <!-- 標籤由 JS 生成 -->
-            </div>
+            <div class="flex flex-nowrap overflow-x-auto gap-4 py-6 px-4 snap-x justify-center" id="level-tabs">
+                </div>
             
-            <!-- 描述顯示區 -->
-            <div id="level-description-box" class="hidden bg-white p-8 rounded-2xl shadow-lg border-2 animate-fade-in relative">
-                <!-- 內容由 JS 填充 -->
-            </div>
+            <div id="level-description-box" class="hidden bg-white p-6 md:p-8 rounded-2xl shadow-lg border-2 animate-fade-in relative min-h-[140px]">
+                </div>
 
             <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 text-center mt-8">
                 <h3 class="text-xl font-bold text-indigo-900 mb-2">準備好測試你的理解了嗎？</h3>
-                <p class="text-indigo-700 mb-6">我們準備了 20 個 HR 實務情境，測驗將隨機抽取 5 題，請判斷它們分別屬於哪個等級。</p>
+                <p class="text-indigo-700 mb-6">我們準備了 20 個 HR 實務情境，測驗將隨機抽取 5 題，請判斷它們分別屬於哪個 HAS 等級。</p>
                 <button onclick="startQuiz()" class="px-10 py-4 bg-indigo-600 text-white rounded-xl font-bold text-xl hover:bg-indigo-700 shadow-lg transform transition hover:scale-105 active:scale-95">
                     開始 5 題隨機挑戰
                 </button>
             </div>
         </div>
 
-        <!-- 第二部分：測驗區 (預設隱藏) -->
         <div id="quiz-section" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-2xl border border-gray-100 animate-fade-in">
             <div class="flex justify-between items-center mb-6">
                 <div class="px-4 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-bold" id="question-number">
@@ -60,11 +90,9 @@
                 <h2 id="scenario-text" class="text-2xl md:text-3xl font-bold text-gray-800 text-center leading-relaxed"></h2>
             </div>
 
-            <div id="answer-buttons" class="grid grid-cols-1 gap-4">
-                <!-- 按鈕會由 JS 生成 -->
-            </div>
+            <div id="answer-buttons" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+                </div>
 
-            <!-- 回饋區 -->
             <div id="feedback" class="hidden mt-10 p-6 rounded-2xl border-2 animate-fade-in">
                 <div class="flex items-start">
                     <div id="feedback-icon" class="text-3xl mr-4"></div>
@@ -81,7 +109,6 @@
             </div>
         </div>
 
-        <!-- 第三部分：結果區 (預設隱藏) -->
         <div id="result-section" class="hidden text-center bg-white p-10 md:p-20 rounded-3xl shadow-2xl border border-gray-100 animate-fade-in">
             <div class="mb-8">
                 <span class="text-6xl">🏆</span>
@@ -103,43 +130,43 @@
             </div>
         </div>
 
-        <!-- 頁尾 -->
         <footer class="mt-16 text-center text-gray-400 text-sm">
             <p>© 2026 HR 數位轉型與 AI 應用課程 - HAS 協作五等級專案</p>
         </footer>
     </div>
 
     <script>
-        // 資料定義
+        // 資料定義 - 為了讓畫面上由左至右呈現 H1 ~ H5，重新排列陣列順序，
+        // 但保留原始 id 以正確對接題庫答案 (id:5 = H1, id:1 = H5)
         const levels = [
-            { id: 1, name: '輔助 (Assistance)', desc: 'AI 作為基礎工具，執行單一、重複性且低風險的任務。', color: 'bg-blue-50 border-blue-500 text-blue-800' },
-            { id: 2, name: '增強 (Augmentation)', desc: 'AI 處理大量數據並提供建議，提升人類的效率或感知能力。', color: 'bg-green-50 border-green-500 text-green-800' },
-            { id: 3, name: '協作 (Collaboration)', desc: '人與 AI 雙向互動，AI 能根據人類的回饋即時修正計畫。', color: 'bg-yellow-50 border-yellow-500 text-yellow-800' },
-            { id: 4, name: '共創 (Co-creation)', desc: 'AI 參與高階策略發想，提供人類未曾察覺的洞察與創意。', color: 'bg-purple-50 border-purple-500 text-purple-800' },
-            { id: 5, name: '共生 (Symbiosis)', desc: '人機高度融合，AI 自動化處理多數流程，人類轉向倫理監督。', color: 'bg-red-50 border-red-500 text-red-800' }
+            { id: 5, has: 'HAS H1', name: 'AI 完全主導', desc: 'AI 代理人主導任務執行AI 完全負責任務執行，無需人類參與或僅需極少監督。', color: 'bg-red-50 border-red-500 text-red-800' },
+            { id: 4, has: 'HAS H2', name: 'AI 主導(需回饋)', desc: 'AI 代理人主導任務執行在少數關鍵點需要人類輸入以改善表現。', color: 'bg-purple-50 border-purple-500 text-purple-800' },
+            { id: 3, has: 'HAS H3', name: '平等夥伴關係', desc: '平等夥伴關係人類與 AI 代理人緊密合作完成任務。', color: 'bg-yellow-50 border-yellow-500 text-yellow-800' },
+            { id: 2, has: 'HAS H4', name: '人類主導任務', desc: '人類主導任務執行人類負責主要執行，AI 作為輔助工具。', color: 'bg-green-50 border-green-500 text-green-800' },
+            { id: 1, has: 'HAS H5', name: '人類完全主導', desc: '人類完全主導任務執行，AI 協助程度不一。', color: 'bg-blue-50 border-blue-500 text-blue-800' }
         ];
 
         const allQuestions = [
-            { scenario: "HR 專員請 ChatGPT 幫忙檢查招募草稿的錯字並翻譯成英文。", ans: 1, why: "這屬於單純的工具任務，主導權完全在人類手中。" },
-            { scenario: "AI 自動掃描 500 份履歷並依契合度打分，HR 從前 10% 名單中挑選面試人選。", ans: 2, why: "AI 處理大量數據篩選（量），人類負責最終決定（質）。" },
-            { scenario: "HR 要求 AI 規劃培訓，回饋修正意見後，AI 隨即重新計算出新方案。", ans: 3, why: "具備雙向對話修正特徵，形成對話式工作流。" },
-            { scenario: "AI 分析通訊數據後警告部門有離職風險，並與 HR 共同發想了留才策略。", ans: 4, why: "AI 提供了深度洞察，並與人類共同完成策略創造。" },
-            { scenario: "24 小時 AI 助理自動審核並批准所有日常請假，HR 完全不需介入。", ans: 5, why: "流程已實現閉環自動化，AI 成為組織運作的底層。" },
-            { scenario: "HR 在準備面試時，請 AI 系統生成「10 個行為面試題」作為提問參考。", ans: 2, why: "AI 增強了專業知識背景，提供更多資訊參考。" },
-            { scenario: "HR 將定稿的手冊文字丟入 AI 排版工具，自動產生有目錄與頁碼的 PDF。", ans: 1, why: "AI 僅作為格式化工具使用。" },
-            { scenario: "AI 自動調度「機器員工」支援過載部門，HR 角色轉為倫理與公平性審核。", ans: 5, why: "高度融合共生，人類職能已轉向高階監管。" },
-            { scenario: "HR 與 AI 共同設計制度，AI 提出了人類未曾想過的「市場動態浮動模型」。", ans: 4, why: "AI 參與了具備原創性的方案產出。" },
-            { scenario: "AI 自動歸納問卷的三大痛點，HR 根據痛點撰寫報告給主管。", ans: 2, why: "AI 協助數據歸納，但策略撰寫仍由人類完成。" },
-            { scenario: "AI 系統即時監控公司內部的溝通情緒，並主動建議 HR 介入某個正處於高度衝突的專案小組。", ans: 4, why: "AI 提供了情緒感知的深度洞察，參與了組織健康的策略預警。" },
-            { scenario: "新進員工的所有入職文件、帳號申請與硬體領取，全部由 AI Agent 在 10 分鐘內自動完成，無須 HR 手動核對。", ans: 5, why: "入職行政流程已達成完全自動化的共生狀態。" },
-            { scenario: "HR 需要將一份 50 頁的全新勞基法修正案快速重點摘要，因此請 AI 產生 5 個列點式的精簡報告。", ans: 1, why: "AI 扮演的是資訊摘要的輔助工具角色。" },
-            { scenario: "AI 根據技能缺口分析與過往績效數據，為 HR 推薦了三個最具潛力的內部晉升人選。", ans: 2, why: "AI 處理了複雜的數據匹配，強化了 HR 的決策資訊量。" },
-            { scenario: "HR 與 AI 協同設計混合辦公排班，HR 給予「辦公室利用率 60%」的限制，AI 產出後雙方來回修正了三次才定稿。", ans: 3, why: "典型的人機協作流程，透過多輪對話達成複雜目標。" },
-            { scenario: "AI 根據員工的專業領域與當前工作量，自動產生了一份最適合參與特定專案的面試官建議名單。", ans: 2, why: "AI 輔助 HR 進行資源匹配，提升了決策的數據支持。" },
-            { scenario: "員工透過聊天機器人詢問「我今年還有幾天特休？」，AI 自動對接 HRIS 系統並即時給出正確回覆。", ans: 5, why: "查詢與回覆流程已完全自動化，AI 獨立提供服務。" },
-            { scenario: "HR 使用 AI 針對公司年度家庭日的主題進行創意發想，AI 提出了一種結合「虛擬實境與實體尋寶」的新型活動框架。", ans: 4, why: "AI 貢獻了具備原創性的創意框架，與人類共同完成方案設計。" },
-            { scenario: "AI 自動記錄員工紀律聽證會的逐字稿，並即時標註出可能違反法律程序的敏感對話片段。", ans: 2, why: "AI 增強了 HR 對風險的感知與捕捉能力。" },
-            { scenario: "HR 給予 AI 一個目標「降低業務部 15% 的離職率」，AI 隨即提出了一套包含導師制度與激勵方案的完整草案供 HR 審閱修正。", ans: 3, why: "AI 作為執行夥伴，針對高階目標提出計畫並等待人機互動優化。" }
+            { scenario: "HR 專員請 ChatGPT 幫忙檢查招募草稿的錯字並翻譯成英文。", ans: 1, why: "這屬於單純的工具任務，人類完全主導 (HAS H5)。" },
+            { scenario: "AI 自動掃描 500 份履歷並依契合度打分，HR 從前 10% 名單中挑選面試人選。", ans: 2, why: "AI 輔助處理數據，但人類負責主要執行與最終決策 (HAS H4)。" },
+            { scenario: "HR 要求 AI 規劃培訓，回饋修正意見後，AI 隨即重新計算出新方案。", ans: 3, why: "具備雙向對話修正特徵，形成平等夥伴的協作關係 (HAS H3)。" },
+            { scenario: "AI 分析通訊數據後警告部門有離職風險，並與 HR 共同發想了留才策略。", ans: 3, why: "AI 提供了深度洞察，人類與 AI 緊密合作共同產出策略 (HAS H3)。" },
+            { scenario: "24 小時 AI 助理自動審核並批准所有日常請假，HR 完全不需介入。", ans: 5, why: "AI 完全負責任務執行，無需人類參與 (HAS H1)。" },
+            { scenario: "HR 在準備面試時，請 AI 系統生成「10 個行為面試題」作為提問參考。", ans: 2, why: "人類主導任務，AI 僅作為提供資訊的輔助工具 (HAS H4)。" },
+            { scenario: "HR 將定稿的手冊文字丟入 AI 排版工具，自動產生有目錄與頁碼的 PDF。", ans: 1, why: "完全由人類主導，AI 僅協助基礎格式化 (HAS H5)。" },
+            { scenario: "AI 自動調度「機器員工」支援過載部門，HR 角色轉為倫理與公平性審核。", ans: 4, why: "AI 主導主要調度任務，但在審核關鍵點需要人類輸入把關 (HAS H2)。" },
+            { scenario: "HR 與 AI 共同設計制度，AI 提出了人類未曾想過的「市場動態浮動模型」。", ans: 3, why: "人機成為平等夥伴，共同合作發揮出優於單方的表現 (HAS H3)。" },
+            { scenario: "AI 自動歸納問卷的三大痛點，HR 根據痛點撰寫報告給主管。", ans: 2, why: "AI 擔任輔助工具進行歸納，主要撰寫任務由人類主導 (HAS H4)。" },
+            { scenario: "AI 系統即時監控公司內部的溝通情緒，並主動建議 HR 介入某個正處於高度衝突的專案小組。", ans: 4, why: "AI 主動發起並主導監控，在關鍵介入點尋求人類參與 (HAS H2)。" },
+            { scenario: "新進員工的所有入職文件、帳號申請與硬體領取，全部由 AI Agent 在 10 分鐘內自動完成，無須 HR 手動核對。", ans: 5, why: "任務完全由 AI 處理自動化，無需人類介入 (HAS H1)。" },
+            { scenario: "HR 需要將一份 50 頁的全新勞基法修正案快速重點摘要，因此請 AI 產生 5 個列點式的精簡報告。", ans: 1, why: "人類完全主導任務發起與使用，AI 單純協助處理資訊 (HAS H5)。" },
+            { scenario: "AI 根據技能缺口分析與過往績效數據，為 HR 推薦了三個最具潛力的內部晉升人選。", ans: 2, why: "AI 作為強大的輔助工具，提供數據支持人類主導的決策 (HAS H4)。" },
+            { scenario: "HR 與 AI 協同設計混合辦公排班，HR 給予「辦公室利用率 60%」的限制，AI 產出後雙方來回修正了三次才定稿。", ans: 3, why: "典型的平等夥伴關係，透過多輪互動達成複雜目標 (HAS H3)。" },
+            { scenario: "AI 根據員工的專業領域與當前工作量，自動產生了一份最適合參與特定專案的面試官建議名單。", ans: 2, why: "人類依賴 AI 提供的建議名單進行下一步動作 (HAS H4)。" },
+            { scenario: "員工透過聊天機器人詢問「我今年還有幾天特休？」，AI 自動對接 HRIS 系統並即時給出正確回覆。", ans: 5, why: "查詢與回覆流程由 AI 完全負責，取代人類客服功能 (HAS H1)。" },
+            { scenario: "HR 使用 AI 針對公司年度家庭日的主題進行創意發想，AI 提出了一種結合「虛擬實境與實體尋寶」的新型活動框架。", ans: 3, why: "與 AI 緊密合作，共同完成創意方案設計 (HAS H3)。" },
+            { scenario: "AI 自動記錄員工紀律聽證會的逐字稿，並即時標註出可能違反法律程序的敏感對話片段。", ans: 2, why: "AI 提供強大的輔助分析，但聽證會的主導仍是人類 (HAS H4)。" },
+            { scenario: "HR 給予 AI 一個目標「降低業務部 15% 的離職率」，AI 隨即提出了一套包含導師制度與激勵方案的完整草案供 HR 審閱修正。", ans: 4, why: "AI 根據目標主導了草案設計，但需要人類在關鍵點(審閱修正)輸入以確保可行 (HAS H2)。" }
         ];
 
         let quizQuestions = [];
@@ -152,25 +179,26 @@
         function showLevelDescription(id) {
             const level = levels.find(l => l.id === id);
             
+            // 根據您的需求，點擊按鈕後只顯示描述
             descBox.innerHTML = `
                 <div class="${level.color} absolute inset-0 opacity-10 rounded-2xl"></div>
-                <div class="relative z-10">
-                    <div class="flex items-center gap-4 mb-4">
-                        <span class="text-4xl font-black opacity-20">L${level.id}</span>
-                        <h3 class="text-2xl font-bold text-gray-800">${level.name}</h3>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
+                    <span class="px-5 py-3 bg-white rounded-xl text-2xl font-black shadow-sm text-gray-800 border-2 border-gray-100 flex-shrink-0">${level.has}</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${level.name}</h3>
+                        <p class="text-lg text-gray-700 font-medium leading-relaxed">${level.desc}</p>
                     </div>
-                    <p class="text-lg text-gray-700 leading-relaxed">${level.desc}</p>
                 </div>
             `;
             descBox.classList.remove('hidden');
 
             document.querySelectorAll('.level-tab').forEach(tab => {
                 if (tab.dataset.id == id) {
-                    tab.classList.add('ring-4', 'ring-indigo-300', 'scale-110', 'z-20');
-                    tab.classList.remove('opacity-70', 'z-10');
+                    tab.classList.add('ring-4', 'ring-indigo-300', 'scale-105', 'z-20');
+                    tab.classList.remove('opacity-60', 'z-10');
                 } else {
-                    tab.classList.remove('ring-4', 'ring-indigo-300', 'scale-110', 'z-20');
-                    tab.classList.add('opacity-70', 'z-10');
+                    tab.classList.remove('ring-4', 'ring-indigo-300', 'scale-105', 'z-20');
+                    tab.classList.add('opacity-60', 'z-10');
                 }
             });
         }
@@ -178,19 +206,19 @@
         levels.forEach(l => {
             const tab = document.createElement('button');
             tab.dataset.id = l.id;
-            tab.className = `level-tab flex-none w-32 p-4 rounded-2xl border-2 shadow-md transform transition-all duration-300 hover:scale-110 opacity-70 hover:opacity-100 z-10 ${l.color}`;
+            tab.className = `level-tab flex-none w-[140px] p-4 rounded-2xl border-2 shadow-md transform transition-all duration-300 hover:scale-105 opacity-60 hover:opacity-100 z-10 ${l.color}`;
             tab.onclick = () => showLevelDescription(l.id);
             tab.innerHTML = `
-                <div class="text-xs font-black mb-1 text-center">Level ${l.id}</div>
-                <div class="font-bold text-sm text-center whitespace-normal leading-tight">${l.name.split(' ')[0]}</div>
+                <div class="text-lg font-black mb-1 text-center">${l.has}</div>
+                <div class="font-bold text-sm text-center whitespace-normal leading-tight opacity-80">${l.name}</div>
             `;
             tabsContainer.appendChild(tab);
         });
 
-        showLevelDescription(1);
+        // 預設顯示中間的 HAS H3
+        showLevelDescription(3);
 
         function startQuiz() {
-            // 亂數抽取 5 題
             quizQuestions = [...allQuestions]
                 .sort(() => Math.random() - 0.5)
                 .slice(0, 5);
@@ -214,11 +242,13 @@
             
             levels.forEach(l => {
                 const btn = document.createElement('button');
+                btn.dataset.id = l.id; // 新增 data-id 屬性方便後續選取
                 btn.onclick = () => checkAnswer(l.id, btn);
-                btn.className = "p-4 text-left rounded-2xl border-2 border-gray-100 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-200 font-bold text-gray-700 flex justify-between items-center group";
+                btn.className = "p-4 text-left rounded-2xl border-2 border-gray-100 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-200 text-gray-700 flex flex-col md:flex-row md:items-center group gap-2 md:gap-4";
                 btn.innerHTML = `
-                    <span>${l.name}</span>
-                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-sm">選擇 →</span>
+                    <span class="font-black text-xl w-24 shrink-0 text-indigo-900">${l.has}</span>
+                    <span class="font-bold text-md">${l.name}</span>
+                    <span class="md:ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-sm font-bold text-indigo-500 hidden md:block">選擇 →</span>
                 `;
                 btnContainer.appendChild(btn);
             });
@@ -236,6 +266,7 @@
             btns.forEach(b => {
                 b.disabled = true;
                 b.classList.replace('hover:border-indigo-400', 'cursor-default');
+                b.classList.replace('hover:bg-indigo-50', 'bg-white');
             });
 
             if (id === q.ans) {
@@ -252,7 +283,11 @@
                 status.className = "font-bold text-xl mb-1 text-red-700";
                 clickedBtn.classList.add('border-red-500', 'bg-red-100');
                 
-                btns[q.ans - 1].classList.add('border-green-500', 'bg-green-50', 'ring-2', 'ring-green-200');
+                // 找出正確解答的按鈕並標示
+                const correctBtn = document.querySelector(`#answer-buttons button[data-id="${q.ans}"]`);
+                if (correctBtn) {
+                    correctBtn.classList.add('border-green-500', 'bg-green-50', 'ring-2', 'ring-green-200');
+                }
             }
             
             document.getElementById('feedback-text').innerText = q.why;
@@ -278,10 +313,10 @@
             document.getElementById('final-score').innerText = `${score} / 100`;
             
             let comment = "";
-            if (score === 100) comment = "神級理解！你已經準備好帶領組織進行人機共生的深度轉型了。";
+            if (score === 100) comment = "神級理解！你已經精準掌握 HAS 人類自主性量表的各個層次。";
             else if (score >= 80) comment = "非常專業！你對 AI 在 HR 實務中的應用層次有很清晰的判讀。";
-            else if (score >= 60) comment = "掌握不錯！你已經具備區分 AI 工具與 AI 夥伴的基本能力。";
-            else comment = "建議再次複習五個等級的定義，AI 的潛力遠大於單純的文字翻譯喔！";
+            else if (score >= 60) comment = "掌握不錯！你已經具備區分 AI 自動化與人類增強的基本能力。";
+            else comment = "建議再次複習 HAS 描述，清楚區分「任務分工」與「技術角色」的差異喔！";
             
             document.getElementById('result-comment').innerText = comment;
         }
