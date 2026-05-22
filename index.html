@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>企業 AI 轉型實踐工具包：HAS 與 PTCF 實戰沙盒</title>
-    <!-- 引入 Tailwind CSS 樣式庫 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hidden { display: none; }
@@ -27,7 +26,6 @@
 </head>
 <body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans">
     
-    <!-- 頂部標題 -->
     <header class="text-center mb-8">
         <h1 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">企業 AI 轉型實踐工具包</h1>
         <p class="text-lg text-gray-600">從人機協作思維到跨部門提示詞實戰沙盒</p>
@@ -35,7 +33,6 @@
 
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-6">
         
-        <!-- 左側導覽列 -->
         <nav class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0">
             <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-200 flex md:flex-col gap-2 overflow-x-auto no-scrollbar sticky top-8">
                 <button id="nav-has" onclick="switchMenu('has')" class="nav-btn w-full px-5 py-4 bg-indigo-600 text-white rounded-xl font-bold text-left whitespace-nowrap transition-colors flex items-center justify-between">
@@ -49,19 +46,13 @@
             </div>
         </nav>
 
-        <!-- 右側內容區 -->
         <main class="w-full md:w-3/4 lg:w-4/5">
             
-            <!-- ============================================== -->
-            <!-- 第一區塊：HAS 協作五等級 -->
-            <!-- ============================================== -->
             <div id="section-has" class="animate-fade-in">
-                <!-- HAS 標題與表格 -->
                 <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-200 mb-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-2">HAS 人類自主性量表 (Human Agency Scale)</h2>
                     <p class="text-gray-600 mb-6">理解人機協作的五個層次，定位你的 AI 應用深度。<span class="text-sm text-gray-400 ml-2">資料來源：《Future of Work with AI Agents》</span></p>
                     
-                    <!-- 轉置後的黑白粗體表格 -->
                     <div class="overflow-x-auto shadow-sm rounded-lg border border-gray-400 bg-white text-left">
                         <table class="w-full border-collapse min-w-[900px]">
                             <thead>
@@ -101,7 +92,6 @@
                     </div>
                 </div>
 
-                <!-- HAS 學習與按鈕互動區 -->
                 <div id="learning-section" class="space-y-6">
                     <div class="flex flex-nowrap overflow-x-auto gap-4 py-2 px-1 snap-x justify-center" id="level-tabs"></div>
                     <div id="level-description-box" class="hidden bg-white p-6 md:p-8 rounded-2xl shadow-lg border-2 animate-fade-in relative min-h-[140px]"></div>
@@ -115,7 +105,6 @@
                     </div>
                 </div>
 
-                <!-- 測驗進行區 -->
                 <div id="quiz-section" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-xl border border-gray-200 animate-fade-in">
                     <div class="flex justify-between items-center mb-6">
                         <div class="px-4 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-bold" id="question-number">第 1 / 5 題</div>
@@ -140,7 +129,6 @@
                     </div>
                 </div>
 
-                <!-- 測驗結果區 -->
                 <div id="result-section" class="hidden text-center bg-white p-10 md:p-16 rounded-3xl shadow-xl border border-gray-200 animate-fade-in">
                     <div class="mb-6"><span class="text-6xl">🏆</span></div>
                     <h2 class="text-2xl font-bold text-gray-900 mb-2">測驗結束！您的得分是</h2>
@@ -154,12 +142,8 @@
                 </div>
             </div>
 
-            <!-- ============================================== -->
-            <!-- 第二區塊：PTCF 提示詞框架與實戰沙盒 -->
-            <!-- ============================================== -->
             <div id="section-ptcf" class="hidden space-y-8 animate-fade-in">
                 
-                <!-- PTCF 理論說明 -->
                 <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-200">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">💡</span>
@@ -187,15 +171,12 @@
                     </div>
                 </div>
 
-                <!-- 跨部門案例庫 -->
                 <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-200">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">跨部門範例庫：製造業實戰提示詞範本</h3>
                     <p class="text-sm text-gray-500 mb-6">點選下方不同部門的角色標籤，即可查看完整的 PTCF 組合提示詞樣式。</p>
                     
-                    <!-- 跨部門角色按鈕 -->
                     <div class="flex flex-wrap gap-3 mb-6" id="role-buttons"></div>
 
-                    <!-- 提示詞展示區 -->
                     <div id="prompt-display" class="hidden bg-gray-900 rounded-2xl overflow-hidden shadow-inner border border-gray-800">
                         <div class="bg-gray-800 px-4 py-2 border-b border-gray-700 flex items-center justify-between">
                             <div class="flex items-center gap-2">
@@ -209,7 +190,6 @@
                     </div>
                 </div>
 
-                <!-- 實際操作單元：PTCF 實戰演練沙盒 -->
                 <div class="bg-indigo-900 text-white p-6 md:p-8 rounded-3xl shadow-xl space-y-6">
                     <div>
                         <div class="inline-block bg-indigo-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">互動體驗區</div>
@@ -217,7 +197,6 @@
                         <p class="text-indigo-200 text-sm mt-1">同仁可在下方動態調整或自訂四個架構輸入格，一鍵呼叫後端安全中繼站，讓大語言模型現場即時產出客製化結果。</p>
                     </div>
 
-                    <!-- 第一步：選擇實戰題目 -->
                     <div class="bg-indigo-950 p-4 rounded-xl space-y-3">
                         <label class="block text-sm font-bold text-indigo-300">步驟 1：選擇要產出結果的實務題目範本</label>
                         <div class="flex flex-wrap gap-2">
@@ -233,7 +212,6 @@
                         </div>
                     </div>
 
-                    <!-- 第二步：填寫四個架構輸入格 -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="space-y-1">
                             <label class="block text-xs font-bold text-blue-300">P - 角色 (Persona)</label>
@@ -253,14 +231,12 @@
                         </div>
                     </div>
 
-                    <!-- 第三步：呼叫 AI 按鈕 -->
                     <div class="text-center pt-2">
                         <button onclick="triggerSandboxAI()" class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-lg shadow-lg transform transition hover:scale-105 active:scale-95 flex items-center gap-2 mx-auto">
                             <span>🚀 發送提示詞矩陣並呼叫 AI 運算產出</span>
                         </button>
                     </div>
 
-                    <!-- AI 運算產出結果展示面板 -->
                     <div id="ai-output-box" class="hidden bg-white text-gray-800 rounded-2xl p-6 shadow-2xl border border-gray-200 animate-fade-in space-y-4">
                         <div class="flex items-center justify-between border-b pb-3">
                             <div class="flex items-center gap-2">
@@ -273,8 +249,7 @@
                             <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-500 font-mono">Status: Connected</span>
                         </div>
                         
-                        <!-- AI 內容裝載區 -->
-                        <div id="ai-output-content" class="text-sm leading-relaxed text-gray-700 prose max-w-none p-2 bg-gray-50 rounded-xl border border-gray-100 overflow-y-auto max-h-[500px]"></div>
+                        <div id="ai-output-content" class="text-sm leading-relaxed text-gray-700 prose max-w-none p-4 bg-gray-50 rounded-xl border border-gray-100 overflow-y-auto max-h-[500px]"></div>
                     </div>
                 </div>
             </div>
@@ -621,12 +596,11 @@
                 const data = await response.json();
                 
                 if (data.error) {
-                    outContent.innerHTML = `<div class="p-4 text-red-600 font-bold bg-red-50 rounded-xl border border-red-200">後端回報錯誤：${data.error}</div>`;
+                    outContent.innerHTML = `<div class="p-4 text-red-600 font-bold bg-red-50 rounded-xl border border-red-200">後端回報錯誤：${data.error}<br><span class="text-sm">若出現 404 錯誤，請確認 Google Apps Script 中的模型已更新為 <code>gemini-1.5-flash</code> 或其他有效模型，並重新『新增部署』。</span></div>`;
                 } else {
                     // 將大語言模型回傳的常見 Markdown 語法轉換為網頁 HTML 排版，確保結構美觀
                     let formattedResult = data.result
-                        .replace(/
-/g, '<br>')
+                        .replace(/\n/g, '<br>')
                         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                         .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
                         .replace(/`([^`]+)`/g, '<code class="bg-gray-100 px-1 rounded text-red-600 font-mono">$1</code>');
