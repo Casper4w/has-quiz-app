@@ -7,10 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hidden { display: none; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        /* 隱藏捲軸但保留滾動功能 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans">
@@ -21,52 +32,224 @@
     </header>
 
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-6">
+        
         <nav class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0">
             <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-200 flex md:flex-col gap-2 overflow-x-auto no-scrollbar sticky top-8">
-                <button id="nav-has" onclick="switchMenu('has')" class="nav-btn w-full px-5 py-4 bg-indigo-600 text-white rounded-xl font-bold text-left transition-colors">HAS 協作五等級</button>
-                <button id="nav-ptcf" onclick="switchMenu('ptcf')" class="nav-btn w-full px-5 py-4 bg-transparent text-gray-600 hover:bg-gray-50 rounded-xl font-bold text-left transition-colors">PTCF 提示詞框架</button>
+                <button id="nav-has" onclick="switchMenu('has')" class="nav-btn w-full px-5 py-4 bg-indigo-600 text-white rounded-xl font-bold text-left whitespace-nowrap transition-colors flex items-center justify-between">
+                    <span>HAS 協作五等級</span>
+                    <span class="text-indigo-200 text-sm hidden md:inline">→</span>
+                </button>
+                <button id="nav-ptcf" onclick="switchMenu('ptcf')" class="nav-btn w-full px-5 py-4 bg-transparent text-gray-600 hover:bg-gray-50 rounded-xl font-bold text-left whitespace-nowrap transition-colors flex items-center justify-between">
+                    <span>PTCF 提示詞框架</span>
+                    <span class="text-gray-300 text-sm hidden md:inline">→</span>
+                </button>
             </div>
         </nav>
 
         <main class="w-full md:w-3/4 lg:w-4/5">
+            
             <div id="section-has" class="animate-fade-in">
                 <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-200 mb-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-2">HAS 人類自主性量表 (Human Agency Scale)</h2>
-                    <p class="text-gray-600 mb-6">理解人機協作的五個層次，定位你的 AI 應用深度。</p>
+                    <p class="text-gray-600 mb-6">理解人機協作的五個層次，定位你的 AI 應用深度。<span class="text-sm text-gray-400 ml-2">資料來源：《Future of Work with AI Agents》</span></p>
+                    
                     <div class="overflow-x-auto shadow-sm rounded-lg border border-gray-400 bg-white text-left">
                         <table class="w-full border-collapse min-w-[900px]">
                             <thead>
                                 <tr>
-                                    <th class="p-4 border-b border-r border-gray-400 font-bold text-center">指標</th>
-                                    <th class="p-4 border-b border-r border-gray-400 font-bold text-center">HAS H1</th>
-                                    <th class="p-4 border-b border-r border-gray-400 font-bold text-center">HAS H2</th>
-                                    <th class="p-4 border-b border-r border-gray-400 font-bold text-center">HAS H3</th>
-                                    <th class="p-4 border-b border-r border-gray-400 font-bold text-center">HAS H4</th>
-                                    <th class="p-4 border-b border-gray-400 font-bold text-center">HAS H5</th>
+                                    <th class="p-4 border-b border-r border-gray-400 bg-white text-black font-bold w-24 text-center">指標</th>
+                                    <th class="p-4 border-b border-r border-gray-400 text-center font-bold text-black bg-white w-1/5">HAS H1</th>
+                                    <th class="p-4 border-b border-r border-gray-400 text-center font-bold text-black bg-white w-1/5">HAS H2</th>
+                                    <th class="p-4 border-b border-r border-gray-400 text-center font-bold text-black bg-white w-1/5">HAS H3</th>
+                                    <th class="p-4 border-b border-r border-gray-400 text-center font-bold text-black bg-white w-1/5">HAS H4</th>
+                                    <th class="p-4 border-b border-gray-400 text-center font-bold text-black bg-white w-1/5">HAS H5</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                </tbody>
+                                <tr>
+                                    <td class="p-4 border-b border-r border-gray-400 bg-white font-bold text-center text-black whitespace-nowrap">描述</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">AI 代理人主導任務執行AI 完全負責任務執行，無需人類參與或僅需極少監督。</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">AI 代理人主導任務執行在少數關鍵點需要人類輸入以改善表現。</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">平等夥伴關係人類與 AI 代理人緊密合作完成任務。</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">人類主導任務執行人類負責主要執行，AI 作為輔助工具。</td>
+                                    <td class="p-4 border-b border-gray-400 text-sm align-top leading-relaxed text-black bg-white">人類完全主導任務執行，AI 協助程度不一。</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border-b border-r border-gray-400 bg-white font-bold text-center text-black whitespace-nowrap">任務分工</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">AI 完全處理，無需你介入。</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">AI 在幾個關鍵點需要你的輸入才能更好執行。</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">你與 AI 一起合作，表現優於單方執行。</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">AI 需要你的輸入才能成功完成任務。</td>
+                                    <td class="p-4 border-b border-r border-gray-400 text-sm align-top leading-relaxed text-black bg-white">完全仰賴你的參與完成任務。</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 border-r border-gray-400 bg-white font-bold text-center text-black whitespace-nowrap">技術角色</td>
+                                    <td class="p-4 border-r border-gray-400 text-center font-bold text-black bg-white" colspan="2">自動化<br><span class="text-sm font-normal text-black mt-1 block">AI 取代人類能力</span></td>
+                                    <td class="p-4 text-center font-bold text-black bg-white" colspan="3">增強<br><span class="text-sm font-normal text-black mt-1 block">AI 提升人類能力</span></td>
+                                </tr>
+                            </tbody>
                         </table>
+                    </div>
+                </div>
+
+                <div id="learning-section" class="space-y-6">
+                    <div class="flex flex-nowrap overflow-x-auto gap-4 py-2 px-1 snap-x justify-center" id="level-tabs"></div>
+                    <div id="level-description-box" class="hidden bg-white p-6 md:p-8 rounded-2xl shadow-lg border-2 animate-fade-in relative min-h-[140px]"></div>
+
+                    <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 text-center mt-8">
+                        <h3 class="text-xl font-bold text-indigo-900 mb-2">準備好測試你的理解了嗎？</h3>
+                        <p class="text-indigo-700 mb-6">我們準備了 20 個 HR 實務情境，請判斷它們分別屬於哪個 HAS 等級。</p>
+                        <button onclick="startQuiz()" class="px-10 py-4 bg-indigo-600 text-white rounded-xl font-bold text-xl hover:bg-indigo-700 shadow-md transform transition hover:scale-105">
+                            開始 5 題隨機挑戰
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-section" class="hidden bg-white p-6 md:p-10 rounded-3xl shadow-xl border border-gray-200 animate-fade-in">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="px-4 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-bold" id="question-number">第 1 / 5 題</div>
+                        <div class="text-gray-500 font-bold" id="current-score">得分: 0</div>
+                    </div>
+                    <div class="mb-10">
+                        <p class="text-sm text-indigo-500 font-bold mb-2 text-center tracking-widest">情境描述</p>
+                        <h2 id="scenario-text" class="text-2xl font-bold text-gray-800 text-center leading-relaxed"></h2>
+                    </div>
+                    <div id="answer-buttons" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4"></div>
+                    <div id="feedback" class="hidden mt-8 p-6 rounded-2xl border-2 animate-fade-in">
+                        <div class="flex items-start">
+                            <div id="feedback-icon" class="text-3xl mr-4"></div>
+                            <div>
+                                <p id="feedback-status" class="font-bold text-xl mb-1"></p>
+                                <p id="feedback-text" class="text-gray-700 leading-relaxed"></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button onclick="nextQuestion()" class="mt-4 px-8 py-3 bg-gray-900 text-white rounded-xl font-bold hover:bg-black transition">下一題 →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="result-section" class="hidden text-center bg-white p-10 md:p-16 rounded-3xl shadow-xl border border-gray-200 animate-fade-in">
+                    <div class="mb-6"><span class="text-6xl">🏆</span></div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">測驗結束！您的得分是</h2>
+                    <div id="final-score" class="text-7xl font-black text-indigo-600 mb-6">0 / 100</div>
+                    <div class="max-w-md mx-auto bg-gray-50 p-6 rounded-2xl mb-8">
+                        <p id="result-comment" class="text-lg text-gray-700 font-medium"></p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4 justify-center">
+                        <button onclick="location.reload()" class="px-8 py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700">重新挑戰</button>
                     </div>
                 </div>
             </div>
 
             <div id="section-ptcf" class="hidden space-y-8 animate-fade-in">
-                <div class="bg-indigo-900 text-white p-8 rounded-3xl shadow-xl space-y-6">
-                    <h3 class="text-2xl font-black">PTCF 同仁實戰演練沙盒 (動態模擬模式)</h3>
-                    <p class="text-indigo-200 text-sm">同仁可在下方動態調整或自訂架構，體驗結構化提示詞。</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <textarea id="input-p" rows="2" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm"></textarea>
-                        <textarea id="input-t" rows="2" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm"></textarea>
-                        <textarea id="input-c" rows="3" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm"></textarea>
-                        <textarea id="input-f" rows="3" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm"></textarea>
+                
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">💡</span>
+                        <h2 class="text-2xl font-bold text-gray-900">Google Gemini 提示詞指南：PTCF 框架</h2>
                     </div>
-                    <button onclick="triggerSandboxAI()" class="px-8 py-4 bg-emerald-500 rounded-xl font-black text-lg mx-auto block hover:bg-emerald-600 transition">
-                        🚀 提示詞發送
-                    </button>
-                    <div id="ai-output-box" class="hidden bg-white text-gray-800 rounded-2xl p-6">
-                        <div id="ai-output-content" class="text-sm leading-relaxed"></div>
+                    <p class="text-gray-600 mb-8 leading-relaxed">這是企業推動數位轉型與人機協作時，同仁必學的核心技能。透過結構化提示詞，能大幅提升 AI 生成各式報告與書信的精準度。其中<strong>「任務 (Task)」包含一個具體動詞，是絕對不可或缺的核心。</strong></p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+                            <h3 class="font-black text-blue-800 text-lg mb-2 flex items-center gap-2"><span class="bg-blue-200 text-blue-900 px-2 py-0.5 rounded text-sm">P</span> 角色 (Persona)</h3>
+                            <p class="text-gray-700 text-sm">設定 AI 應扮演的角色、職位、專家身分。<br><span class="text-blue-600 font-medium mt-1 inline-block">例：你是一位精通精實生產的製造部經理。</span></p>
+                        </div>
+                        <div class="bg-red-50/50 border border-red-100 p-5 rounded-2xl">
+                            <h3 class="font-black text-red-800 text-lg mb-2 flex items-center gap-2"><span class="bg-red-200 text-red-900 px-2 py-0.5 rounded text-sm">T</span> 任務 (Task) ⚠️核心</h3>
+                            <p class="text-gray-700 text-sm">明確指出希望 AI 執行的具體工作，必須包含明確的動詞。<br><span class="text-red-600 font-medium mt-1 inline-block">例：請撰寫機台操作 SOP、分析不良率、起草催貨信...</span></p>
+                        </div>
+                        <div class="bg-green-50/50 border border-green-100 p-5 rounded-2xl">
+                            <h3 class="font-black text-green-800 text-lg mb-2 flex items-center gap-2"><span class="bg-green-200 text-green-900 px-2 py-0.5 rounded text-sm">C</span> 背景資訊 (Context)</h3>
+                            <p class="text-gray-700 text-sm">提供相關的背景數據、特殊情境、限制條件或參考資料。<br><span class="text-green-600 font-medium mt-1 inline-block">例：針對中和廠區 A3 線、因為原物料延遲交期 5 天...</span></p>
+                        </div>
+                        <div class="bg-purple-50/50 border border-purple-100 p-5 rounded-2xl">
+                            <h3 class="font-black text-purple-800 text-lg mb-2 flex items-center gap-2"><span class="bg-purple-200 text-purple-900 px-2 py-0.5 rounded text-sm">F</span> 格式 (Format)</h3>
+                            <p class="text-gray-700 text-sm">指定最終輸出的排版樣式、字數限制或呈現形式。<br><span class="text-purple-600 font-medium mt-1 inline-block">例：限制使用 3 欄式表格呈現，或是分成三大點列出。</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">跨部門範例庫：製造業實戰提示詞範本</h3>
+                    <p class="text-sm text-gray-500 mb-6">點選下方不同部門的角色標籤，即可查看完整的 PTCF 組合提示詞樣式。</p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-6" id="role-buttons"></div>
+
+                    <div id="prompt-display" class="hidden bg-gray-900 rounded-2xl overflow-hidden shadow-inner border border-gray-800">
+                        <div class="bg-gray-800 px-4 py-2 border-b border-gray-700 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="text-gray-400 text-sm ml-2 font-mono" id="prompt-filename">prompt.txt</span>
+                            </div>
+                        </div>
+                        <div class="p-6 md:p-8 text-white font-mono text-base md:text-lg leading-relaxed space-y-4" id="prompt-content"></div>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-900 text-white p-6 md:p-8 rounded-3xl shadow-xl space-y-6">
+                    <div>
+                        <div class="inline-block bg-indigo-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">互動體驗區</div>
+                        <h3 class="text-2xl font-black">PTCF 同仁實戰演練沙盒 (動態模擬模式)</h3>
+                        <p class="text-indigo-200 text-sm mt-1">同仁可在下方動態調整四個架構輸入格，一鍵點擊後，系統將模擬大語言模型，針對所選情境產出客製化的高品質結果。</p>
+                    </div>
+
+                    <div class="bg-indigo-950 p-4 rounded-xl space-y-3">
+                        <label class="block text-sm font-bold text-indigo-300">步驟 1：選擇要產出結果的實務題目範本</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="selectSandboxTopic('jd')" id="btn-topic-jd" class="topic-btn px-4 py-2 rounded-lg text-sm font-bold bg-indigo-600 text-white shadow">
+                                📝 撰寫【現場操作員】工作說明書
+                            </button>
+                            <button onclick="selectSandboxTopic('report')" id="btn-topic-report" class="topic-btn px-4 py-2 rounded-lg text-sm font-bold bg-indigo-800 text-indigo-300 hover:bg-indigo-700 hover:text-white">
+                                📊 撰寫【機台異常故障】分析摘要
+                            </button>
+                            <button onclick="selectSandboxTopic('email')" id="btn-topic-email" class="topic-btn px-4 py-2 rounded-lg text-sm font-bold bg-indigo-800 text-indigo-300 hover:bg-indigo-700 hover:text-white">
+                                ✉️ 撰寫【供應商延遲交期】協商郵件
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-blue-300">P - 角色 (Persona)</label>
+                            <textarea id="input-p" rows="2" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-red-300">T - 任務 (Task) *必填動詞</label>
+                            <textarea id="input-t" rows="2" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-green-300">C - 背景資訊 (Context)</label>
+                            <textarea id="input-c" rows="3" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-purple-300">F - 格式 (Format)</label>
+                            <textarea id="input-f" rows="3" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-2">
+                        <button onclick="triggerSandboxAI()" class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-black text-lg shadow-lg transform transition hover:scale-105 active:scale-95 flex items-center gap-2 mx-auto">
+                            <span>🚀 提示詞發送</span>
+                        </button>
+                    </div>
+
+                    <div id="ai-output-box" class="hidden bg-white text-gray-800 rounded-2xl p-6 shadow-2xl border border-gray-200 animate-fade-in space-y-4">
+                        <div class="flex items-center justify-between border-b pb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="flex h-3 w-3 relative">
+                                  <span class="animate-ping absolute inline-flex h-100 w-100 rounded-full bg-emerald-400 opacity-75"></span>
+                                  <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                                </span>
+                                <h4 class="font-bold text-gray-900">Gemini AI 模擬生成結果</h4>
+                            </div>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-500 font-mono">Status: Simulated Mode</span>
+                        </div>
+                        
+                        <div id="ai-output-content" class="text-sm leading-relaxed text-gray-700 prose max-w-none p-4 bg-gray-50 rounded-xl border border-gray-100 overflow-y-auto max-h-[500px]"></div>
                     </div>
                 </div>
             </div>
@@ -74,32 +257,533 @@
     </div>
 
     <script>
-        // 切換顯示邏輯
-        function switchMenu(s) {
-            document.getElementById('section-has').classList.toggle('hidden', s !== 'has');
-            document.getElementById('section-ptcf').classList.toggle('hidden', s !== 'ptcf');
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.toggle('bg-indigo-600', btn.id === 'nav-'+s));
+        // ==========================================
+        // 介面選單切換邏輯
+        // ==========================================
+        function switchMenu(section) {
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-transparent', 'text-gray-600');
+                if (btn.querySelector('span:last-child')) {
+                    btn.querySelector('span:last-child').classList.replace('text-indigo-200', 'text-gray-300');
+                }
+            });
+            
+            const activeBtn = document.getElementById(`nav-${section}`);
+            activeBtn.classList.remove('bg-transparent', 'text-gray-600');
+            activeBtn.classList.add('bg-indigo-600', 'text-white');
+            if (activeBtn.querySelector('span:last-child')) {
+                activeBtn.querySelector('span:last-child').classList.replace('text-gray-300', 'text-indigo-200');
+            }
+
+            document.getElementById('section-has').classList.add('hidden');
+            document.getElementById('section-ptcf').classList.add('hidden');
+            document.getElementById(`section-${section}`).classList.remove('hidden');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 模擬回應資料庫 (中和廠區版本)
-        const responses = {
-            jd: [ "<h3>【AI 產出：自動化設備維護技術員 工作說明書】</h3><br>負責中和廠區自動化線體操作與日常點檢，維持稼動率95%以上。", ... ],
-            report: [ "<h3>【AI 產出：3號產線停機檢討報告】</h3><br>原因：風扇軸承積碳。對策：每週保養。", ... ],
-            email: [ "<h3>【AI 產出：供應商催貨信】</h3><br>主旨：關於訂單交期延誤之補救要求，請於本週五前安排空運。", ... ]
+        // ==========================================
+        // HAS 測驗與按鈕互動邏輯
+        // ==========================================
+        const hasLevels = [
+            { id: 5, has: 'HAS H1', name: 'AI 完全主導', desc: 'AI 代理人主導任務執行AI 完全負責任務執行，無需人類參與或僅需極少監督。', color: 'bg-red-50 border-red-500 text-red-800' },
+            { id: 4, has: 'HAS H2', name: 'AI 主導(需回饋)', desc: 'AI 代理人主導任務執行在少數關鍵點需要人類輸入以改善表現。', color: 'bg-purple-50 border-purple-500 text-purple-800' },
+            { id: 3, has: 'HAS H3', name: '平等夥伴關係', desc: '平等夥伴關係人類與 AI 代理人緊密合作完成任務。', color: 'bg-yellow-50 border-yellow-500 text-yellow-800' },
+            { id: 2, has: 'HAS H4', name: '人類主導任務', desc: '人類主導任務執行人類負責主要執行，AI 作為輔助工具。', color: 'bg-green-50 border-green-500 text-green-800' },
+            { id: 1, has: 'HAS H5', name: '人類完全主導', desc: '人類完全主導任務執行，AI 協助程度不一。', color: 'bg-blue-50 border-blue-500 text-blue-800' }
+        ];
+
+        const allQuestions = [
+            { scenario: "HR 專員請 ChatGPT 幫忙檢查招募草稿的錯字並翻譯成英文。", ans: 1, why: "這屬於單純的工具任務，人類完全主導 (HAS H5)。" },
+            { scenario: "AI 自動掃描 500 份履歷並依契合度打分，HR 從前 10% 名單中挑選面試人選。", ans: 2, why: "AI 輔助處理數據，但人類負責主要執行與最終決策 (HAS H4)。" },
+            { scenario: "HR 要求 AI 規劃培訓，回饋修正意見後，AI 隨即重新計算出新方案。", ans: 3, why: "具備雙向對話修正特徵，形成平等夥伴的協作關係 (HAS H3)。" },
+            { scenario: "AI 分析通訊數據後警告部門有離職風險，並與 HR 共同發想了留才策略。", ans: 3, why: "AI 提供了深度洞察，人類與 AI 緊密合作共同產出策略 (HAS H3)。" },
+            { scenario: "24 小時 AI 助理自動審核並批准所有日常請假，HR 完全不需介入。", ans: 5, why: "AI 完全負責任務執行，無需人類參與 (HAS H1)。" },
+            { scenario: "HR 在準備面試時，請 AI 系統生成「10 個行為面試題」作為提問參考。", ans: 2, why: "人類主導任務，AI 僅作為提供資訊的輔助工具 (HAS H4)。" },
+            { scenario: "HR 將定稿的手冊文字丟入 AI 排版工具，自動產生有目錄與頁碼的 PDF。", ans: 1, why: "完全由人類主導，AI 僅協助基礎格式化 (HAS H5)。" },
+            { scenario: "AI 自動調度「機器員工」支援過載部門，HR 角色轉為倫理與公平性審核。", ans: 4, why: "AI 主導主要調度任務，但在審核關鍵點需要人類輸入把關 (HAS H2)。" },
+            { scenario: "HR 與 AI 共同設計制度，AI 提出了人類未曾想過的「市場動態浮動模型」。", ans: 3, why: "人機成為平等夥伴，共同合作發揮出優於單方的表現 (HAS H3)。" },
+            { scenario: "AI 自動歸納問卷的三大痛點，HR 根據痛點撰寫報告給主管。", ans: 2, why: "AI 擔任輔助工具進行歸納，主要撰寫任務由人類主導 (HAS H4)。" },
+            { scenario: "AI 系統即時監控公司內部的溝通情緒，並主動建議 HR 介入某個正處於高度衝突的專案小組。", ans: 4, why: "AI 主動發起並主導監控，在關鍵介入點尋求人類參與 (HAS H2)。" },
+            { scenario: "新進員工的所有入職文件、帳號申請與硬體領取，全部由 AI Agent 在 10 分鐘內自動完成，無須 HR 手動核對。", ans: 5, why: "任務完全由 AI 處理自動化，無需人類介入 (HAS H1)。" },
+            { scenario: "HR 需要將一份 50 頁的全新勞基法修正案快速重點摘要，因此請 AI 產生 5 個列點式的精簡報告。", ans: 1, why: "人類完全主導任務發起與使用，AI 單純協助處理資訊 (HAS H5)。" },
+            { scenario: "AI 根據技能缺口分析與過往績效數據，為 HR 推薦了三個最具潛力的內部晉升人選。", ans: 2, why: "AI 作為強大的輔助工具，提供數據支持人類主導的決策 (HAS H4)。" },
+            { scenario: "HR 與 AI 協同設計混合辦公排班，HR 給予「辦公室利用率 60%」的限制，AI 產出後雙方來回修正了三次才定稿。", ans: 3, why: "典型的平等夥伴關係，透過多輪互動達成複雜目標 (HAS H3)。" },
+            { scenario: "AI 根據員工的專業領域與當前工作量，自動產生了一份最適合參與特定專案的面試官建議名單。", ans: 2, why: "人類依賴 AI 提供的建議名單進行下一步動作 (HAS H4)。" },
+            { scenario: "員工透過聊天機器人詢問「我今年還有幾天特休？」，AI 自動對接 HRIS 系統並即時給出正確回覆。", ans: 5, why: "查詢與回覆流程由 AI 完全負責，取代人類客服功能 (HAS H1)。" },
+            { scenario: "HR 使用 AI 針對公司年度家庭日的主題進行創意發想，AI 提出了一種結合「虛擬實境與實體尋寶」的新型活動框架。", ans: 3, why: "與 AI 緊密合作，共同完成創意方案設計 (HAS H3)。" },
+            { scenario: "AI 自動記錄員工紀律聽證會的逐字稿，並即時標註出可能違反法律程序的敏感對話片段。", ans: 2, why: "AI 提供強大的輔助分析，但聽證會的主導仍是人類 (HAS H4)。" },
+            { scenario: "HR 給予 AI 一個目標「降低業務部 15% 的離職率」，AI 隨即提出了一套包含導師制度與激勵方案的完整草案供 HR 審閱修正。", ans: 4, why: "AI 根據目標主導了草案設計，但需要人類在關鍵點(審閱修正)輸入以確保可行 (HAS H2)。" }
+        ];
+
+        let quizQuestions = [];
+        let currentQ = 0;
+        let score = 0;
+
+        const tabsContainer = document.getElementById('level-tabs');
+        const descBox = document.getElementById('level-description-box');
+
+        function showLevelDescription(id) {
+            const level = hasLevels.find(l => l.id === id);
+            descBox.innerHTML = `
+                <div class="${level.color} absolute inset-0 opacity-10 rounded-2xl"></div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
+                    <span class="px-5 py-3 bg-white rounded-xl text-2xl font-black shadow-sm text-gray-800 border-2 border-gray-100 flex-shrink-0">${level.has}</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${level.name}</h3>
+                        <p class="text-lg text-gray-700 font-medium leading-relaxed">${level.desc}</p>
+                    </div>
+                </div>
+            `;
+            descBox.classList.remove('hidden');
+
+            document.querySelectorAll('.level-tab').forEach(tab => {
+                if (tab.dataset.id == id) {
+                    tab.classList.add('ring-4', 'ring-indigo-300', 'scale-105', 'z-20');
+                    tab.classList.remove('opacity-60', 'z-10');
+                } else {
+                    tab.classList.remove('ring-4', 'ring-indigo-300', 'scale-105', 'z-20');
+                    tab.classList.add('opacity-60', 'z-10');
+                }
+            });
+        }
+
+        hasLevels.forEach(l => {
+            const tab = document.createElement('button');
+            tab.dataset.id = l.id;
+            tab.className = `level-tab flex-none w-[140px] p-4 rounded-2xl border-2 shadow-md transform transition-all duration-300 hover:scale-105 opacity-60 hover:opacity-100 z-10 ${l.color}`;
+            tab.onclick = () => showLevelDescription(l.id);
+            tab.innerHTML = `
+                <div class="text-lg font-black mb-1 text-center">${l.has}</div>
+                <div class="font-bold text-sm text-center whitespace-normal leading-tight opacity-80">${l.name}</div>
+            `;
+            tabsContainer.appendChild(tab);
+        });
+
+        showLevelDescription(3); // 預設顯示 H3
+
+        function startQuiz() {
+            quizQuestions = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 5);
+            currentQ = 0;
+            score = 0;
+            document.getElementById('current-score').innerText = `得分: 0`;
+            document.getElementById('learning-section').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = quizQuestions[currentQ];
+            document.getElementById('question-number').innerText = `第 ${currentQ + 1} / 5 題`;
+            document.getElementById('scenario-text').innerText = q.scenario;
+            const btnContainer = document.getElementById('answer-buttons');
+            btnContainer.innerHTML = '';
+            
+            hasLevels.forEach(l => {
+                const btn = document.createElement('button');
+                btn.dataset.id = l.id;
+                btn.onclick = () => checkAnswer(l.id, btn);
+                btn.className = "p-4 text-left rounded-xl border-2 border-gray-100 hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-200 text-gray-700 flex flex-col md:flex-row md:items-center group gap-2 md:gap-4";
+                btn.innerHTML = `<span class="font-black text-lg w-24 shrink-0 text-indigo-900">${l.has}</span><span class="font-bold text-md">${l.name}</span>`;
+                btnContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(id, clickedBtn) {
+            const q = quizQuestions[currentQ];
+            const feedback = document.getElementById('feedback');
+            const status = document.getElementById('feedback-status');
+            const icon = document.getElementById('feedback-icon');
+            feedback.classList.remove('hidden');
+            
+            const btns = document.querySelectorAll('#answer-buttons button');
+            btns.forEach(b => {
+                b.disabled = true;
+                b.classList.replace('hover:border-indigo-400', 'cursor-default');
+                b.classList.replace('hover:bg-indigo-50', 'bg-white');
+            });
+
+            if (id === q.ans) {
+                score += 20;
+                status.innerText = "正確答對了！";
+                icon.innerText = "✅";
+                feedback.className = "mt-8 p-6 rounded-2xl border-2 border-green-200 bg-green-50 animate-fade-in";
+                status.className = "font-bold text-xl mb-1 text-green-700";
+                clickedBtn.classList.add('border-green-500', 'bg-green-100');
+            } else {
+                status.innerText = "可惜選錯了";
+                icon.innerText = "❌";
+                feedback.className = "mt-8 p-6 rounded-2xl border-2 border-red-200 bg-red-50 animate-fade-in";
+                status.className = "font-bold text-xl mb-1 text-red-700";
+                clickedBtn.classList.add('border-red-500', 'bg-red-100');
+                const correctBtn = document.querySelector(`#answer-buttons button[data-id="${q.ans}"]`);
+                if (correctBtn) correctBtn.classList.add('border-green-500', 'bg-green-50', 'ring-2', 'ring-green-200');
+            }
+            document.getElementById('feedback-text').innerText = q.why;
+            document.getElementById('current-score').innerText = `得分: ${score}`;
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            document.getElementById('feedback').classList.add('hidden');
+            if (currentQ < quizQuestions.length) {
+                showQuestion();
+            } else {
+                document.getElementById('quiz-section').classList.add('hidden');
+                document.getElementById('result-section').classList.remove('hidden');
+                document.getElementById('final-score').innerText = `${score} / 100`;
+                let comment = score === 100 ? "神級理解！你已經準備好帶領組織深度轉型了。" : score >= 80 ? "非常專業！判讀清晰且具備極佳概念。" : "掌握不錯！再次點擊表格複習能更上層樓。";
+                document.getElementById('result-comment').innerText = comment;
+            }
+        }
+
+        // ==========================================
+        // PTCF 跨部門案例與實戰沙盒核心邏輯
+        // ==========================================
+        const ptcfData = [
+            {
+                id: 'prod',
+                tag: '#生產製造部主管',
+                icon: '⚙️',
+                filename: 'production_sop_prompt.txt',
+                p: '你是一位精通精實生產(Lean Production)與現場管理的製造部經理。',
+                t: '請幫我針對「沖壓機台換模流程」撰寫一份標準作業程序 (SOP) 改善草案。',
+                c: '廠區最近進行設備升級，發現新進同仁換模工時過長。希望優化程序以減少目視點檢的重覆浪費，並符合 ISO9001 規範。',
+                f: '請依據「準備工作、核心操作、異常排除」三大架構列點呈現，文字要直白且具指令感。'
+            },
+            {
+                id: 'qa',
+                tag: '#品質保證(QA)工程師',
+                icon: '🔬',
+                filename: 'qa_defect_report_prompt.txt',
+                p: '你是一位在電子零件製造業擁有8年資歷的資深品質保證 (QA) 工程師。',
+                t: '請幫我針對「晶片表面刮傷異常」撰寫一份 500 字內的品質異常檢討報告摘要。',
+                c: '在昨日的抽樣檢查中，某特定批號的外觀不良率突發性飆升至 4.5%。初步懷疑是機械手臂吸嘴老化或運送軌道磨損導致。',
+                f: '請使用表格形式呈現，欄位必須包含：【可能主因】、【暫行對策】以及【長期預防措施】。'
+            },
+            {
+                id: 'supply',
+                tag: '#採購物流專員',
+                icon: '📦',
+                filename: 'procurement_negotiation_prompt.txt',
+                p: '你是一位擅長供應鏈談判、在精密樂器與零件製造供應鏈擁有豐富經驗的採購專員。',
+                t: '請幫我起草一封給核心金屬原料供應商的正式催貨與交期協商信件。',
+                c: '該供應商原定於5日前交付關鍵金屬原物料，但至今仍未出貨，已嚴重威脅到我們下週主要線別的排程。我們需要他們在48小時內提出具體特快補救方案，否則將依合約評估損失。',
+                f: '語氣需堅定且符合專業商務禮儀，並明確標示出我方要求的「回覆截止時間點」。'
+            },
+            {
+                id: 'sales',
+                tag: '#海外業務經理',
+                icon: '🌐',
+                filename: 'sales_expansion_prompt.txt',
+                p: '你是一位專門開拓海外市場、擅長高轉化率電子郵件行銷的 B2B 海外業務經理。',
+                t: '請撰寫一封針對歐洲潛在工業客戶的全新產品開發信 (Cold Email)。',
+                c: '我們要推廣公司剛研發的「智慧高精密感測元件」，此產品能降低產線設備 15% 耗能，極度適合正受能源危機影響的歐洲工廠。',
+                f: '信件必須具備吸引人的商務主旨，內容限制在 4 個段落內，結尾需包含一個明確的行動呼籲 (Call to Action)，鼓勵線上預約展示。'
+            }
+        ];
+
+        const sandboxTopics = {
+            jd: {
+                p: "你是一位專精於傳統製造業轉型、基層職能分析的廠區組織發展顧問。",
+                t: "請幫我全新產出一份【自動化機台操作現場技術員】工作說明書 (Job Description)。",
+                c: "此職缺位於新北中和廠區，同仁需要負責自動化機台的日常操作、首件檢查、自主基本保養。公司提供完善的線上數位培訓系統與 TTQS 認證升遷管道。",
+                f: "請整理成三個主要區塊：1.職責範圍 2.必備技能與背景 3.績效考核關鍵指標(KPI)。請用繁體中文呈現。"
+            },
+            report: {
+                p: "你是一位擁有黑帶證照、精通六標準差 (Six Sigma) 的製造業製程改善專家。",
+                t: "請幫我針對「機械手臂馬達過熱停機」事件，快速撰寫一份異常分析與改善報告摘要。",
+                c: "昨天下午 2 點，3號產線的機械手臂突然因馬達過熱自動停機，導致全線中斷 45 分鐘，初步判定為潤滑油劣化及連續高負載運作導致。",
+                f: "請用標準的「現象描述」、「原因分析 (5 Why)」、「短期對策」與「長期預防案」四大版塊進行列點說明。"
+            },
+            email: {
+                p: "你是一位在供應鏈管理與應變協商上有15年資歷的採購總監。",
+                t: "請幫我草擬一封致供應商高層的交期延誤警告與協商解決方案郵件。",
+                c: "因為全球物流塞港，原訂上週到貨的關鍵關鍵零組件再次延遲，已經造成我們重大生產排程過載與損失，需要對方高層介入並評估改走特快空運。",
+                f: "語氣必須強硬但保持商業禮貌，開門見山說明衝擊，並條列出我方能接受的補救期程。"
+            }
         };
 
-        // 發送邏輯
+        const roleContainer = document.getElementById('role-buttons');
+        const promptDisplay = document.getElementById('prompt-display');
+        const promptContent = document.getElementById('prompt-content');
+        const promptFilename = document.getElementById('prompt-filename');
+
+        function renderPtcfPrompt(id) {
+            const data = ptcfData.find(d => d.id === id);
+            promptFilename.innerText = data.filename;
+            
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                if(btn.dataset.id === id) {
+                    btn.classList.add('bg-gray-900', 'text-white', 'ring-2', 'ring-offset-2', 'ring-gray-900');
+                    btn.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-50');
+                } else {
+                    btn.classList.remove('bg-gray-900', 'text-white', 'ring-2', 'ring-offset-2', 'ring-gray-900');
+                    btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-50');
+                }
+            });
+
+            promptContent.innerHTML = `
+                <div><span class="inline-block bg-blue-900 text-blue-200 px-2 py-0.5 rounded text-sm font-bold mr-2">[角色 Persona]</span> <span class="text-blue-100">${data.p}</span></div>
+                <div><span class="inline-block bg-red-900 text-red-200 px-2 py-0.5 rounded text-sm font-bold mr-2">[任務 Task]</span> <span class="text-red-100">${data.t}</span></div>
+                <div><span class="inline-block bg-green-900 text-green-200 px-2 py-0.5 rounded text-sm font-bold mr-2">[背景 Context]</span> <span class="text-green-100">${data.c}</span></div>
+                <div><span class="inline-block bg-purple-900 text-purple-200 px-2 py-0.5 rounded text-sm font-bold mr-2">[格式 Format]</span> <span class="text-purple-100">${data.f}</span></div>
+            `;
+            promptDisplay.classList.remove('hidden');
+        }
+
+        ptcfData.forEach(d => {
+            const btn = document.createElement('button');
+            btn.dataset.id = d.id;
+            btn.className = "role-btn px-4 py-2 bg-white border border-gray-300 rounded-full text-gray-700 font-bold hover:bg-gray-50 transition-all shadow-sm flex items-center gap-2";
+            btn.innerHTML = `<span>${d.icon}</span> <span>${d.tag}</span>`;
+            btn.onclick = () => renderPtcfPrompt(d.id);
+            roleContainer.appendChild(btn);
+        });
+
+        renderPtcfPrompt('prod'); // 預設渲染生產部門範例
+
+        // ==========================================
+        // 沙盒互動控制邏輯 (動態模擬模式 - 4個版本)
+        // ==========================================
+        let currentActiveSandboxTopic = 'jd';
+
+        function selectSandboxTopic(topicKey) {
+            currentActiveSandboxTopic = topicKey;
+            
+            document.querySelectorAll('.topic-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-indigo-800', 'text-indigo-300');
+            });
+            document.getElementById(`btn-topic-${topicKey}`).classList.remove('bg-indigo-800', 'text-indigo-300');
+            document.getElementById(`btn-topic-${topicKey}`).classList.add('bg-indigo-600', 'text-white');
+
+            const topicData = sandboxTopics[topicKey];
+            document.getElementById('input-p').value = topicData.p;
+            document.getElementById('input-t').value = topicData.t;
+            document.getElementById('input-c').value = topicData.c;
+            document.getElementById('input-f').value = topicData.f;
+
+            document.getElementById('ai-output-box').classList.add('hidden');
+        }
+
+        // 動態模擬回應資料庫 (包含中和廠區背景的完整4個版本內容)
+        const dynamicSimulatedResponses = {
+            jd: [
+                `<h3><b>【AI 產出結果：自動化設備維護技術員 工作說明書】</b></h3><br>
+                <p><b>1. 職責範圍 (Responsibilities)</b></p>
+                <ul>
+                    <li>• 負責中和廠區自動化組裝線及沖壓機台之日常操作，確保稼動率達標。</li>
+                    <li>• 落實現場 5S 管理與機台安全規範，執行每日開機前自主點檢。</li>
+                    <li>• 協助生產異常排除，並撰寫簡易巡檢異常通報表單。</li>
+                </ul><br>
+                <p><b>2. 必備技能與背景 (Requirements)</b></p>
+                <ul>
+                    <li>• 高中職以上，機械工程、電機電子相關科系畢業尤佳。</li>
+                    <li>• 需具備閱讀基本機構圖面及使用游標卡尺之能力。</li>
+                    <li>• 樂於學習新技術，願意參與內部 TTQS 晉升培訓課程。</li>
+                </ul><br>
+                <p><b>3. 績效考核關鍵指標 (KPIs)</b></p>
+                <ul>
+                    <li>• <b>生產效率：</b>單班標準工時達成率 95% 以上。</li>
+                    <li>• <b>品質控管：</b>首件檢查確實度 100%，人為操作不良率低於 0.5%。</li>
+                </ul>`,
+                
+                `<h3><b>【AI 產出結果：機台維運專員 (中和廠) Job Description】</b></h3><br>
+                <p><b>一、職責範圍</b></p>
+                <ul>
+                    <li>• 監控自動化生產線運轉數據，及時排除卡料、參數偏差等一線異常。</li>
+                    <li>• 配合線上生管排程進行換模、換線與設備初級調校作業。</li>
+                    <li>• 定期完成線上指派之職安與設備維護課程。</li>
+                </ul><br>
+                <p><b>二、必備技能與背景</b></p>
+                <ul>
+                    <li>• 無經驗可，但需具備基礎電腦操作能力及良好的團隊溝通能力。</li>
+                    <li>• 曾具備傳統製造業經驗，欲轉型學習自動化操作者優先錄取。</li>
+                    <li>• 具備堆高機或天車操作相關證照者有加分。</li>
+                </ul><br>
+                <p><b>三、績效考核關鍵指標</b></p>
+                <ul>
+                    <li>• <b>設備妥善：</b>當班機台異常停機時間小於 30 分鐘。</li>
+                    <li>• <b>工安指標：</b>個人安全違規事件為 0 件/年。</li>
+                </ul>`,
+
+                `<h3><b>【AI 產出結果：智慧產線操作技術員 工作說明書】</b></h3><br>
+                <p><b>1. 職責範圍</b></p>
+                <ul>
+                    <li>• 負責監控戰情室數位面板，操作中和廠區自動化組裝線，確保生產順暢。</li>
+                    <li>• 執行產品首件檢查，並透過 MES 系統即時回報生產良率與工單進度。</li>
+                    <li>• 執行設備自主一級保養，並落實交接班之機台狀態確認。</li>
+                </ul><br>
+                <p><b>2. 必備技能與背景</b></p>
+                <ul>
+                    <li>• 具備基礎機電與識圖知識，熟悉或曾操作過 MES (製造執行系統) 介面者佳。</li>
+                    <li>• 具備良好的數據敏感度，能快速辨識機台參數異常。</li>
+                    <li>• 認同持續學習文化，須配合完成公司規定之 TTQS 線上考核。</li>
+                </ul><br>
+                <p><b>3. 績效考核關鍵指標 (KPIs)</b></p>
+                <ul>
+                    <li>• <b>設備 OEE (整體設備效率)：</b>維持在 85% 以上。</li>
+                    <li>• <b>數據準確度：</b>MES 系統報表填寫與良率回報正確率達 100%。</li>
+                </ul>`,
+
+                `<h3><b>【AI 產出結果：自動化沖壓線作業員 職務規範】</b></h3><br>
+                <p><b>一、 職責範圍</b></p>
+                <ul>
+                    <li>• 負責中和廠區自動沖壓機台之上下料作業、機台操作及模具基礎保養。</li>
+                    <li>• 嚴格遵守沖壓設備工安規範，每次操作前確實進行安全光柵與紅外線感測器測試。</li>
+                    <li>• 依據生產計畫，協助模具更換並完成首末件外觀品質判定。</li>
+                </ul><br>
+                <p><b>二、 必備技能與背景</b></p>
+                <ul>
+                    <li>• 具備機械科背景，或曾受過勞工安全衛生相關教育訓練。</li>
+                    <li>• 具備天車操作證照者大加分。</li>
+                    <li>• 工作態度嚴謹，能高度遵守標準作業程序 (SOP)。</li>
+                </ul><br>
+                <p><b>三、 績效考核關鍵指標</b></p>
+                <ul>
+                    <li>• <b>工安事故率：</b>嚴格要求零工安事故 (0 件)。</li>
+                    <li>• <b>產能達成率：</b>每日每班生產排程達成率達 98% 以上。</li>
+                </ul>`
+            ],
+            report: [
+                `<h3><b>【AI 產出結果：3號產線停機檢討報告】</b></h3><br>
+                <p><b>一、現象描述</b><br>昨日 14:00，3號產線機械手臂控制面板顯示「溫度異常警報 (Err-Temp)」，隨後系統自我保護切斷電源，造成產線停擺 45 分鐘，影響中和廠區當日產能約 5%。</p><br>
+                <p><b>二、原因分析 (5 Why)</b></p>
+                <ul>
+                    <li>1. 為什麼停機？ -> 因主伺服馬達外殼溫度超過 85°C 觸發保護。</li>
+                    <li>2. 為什麼溫度過高？ -> 因內部散熱風扇轉速異常降低。</li>
+                    <li>3. 為什麼風扇轉速降低？ -> 因風扇軸承積碳卡死.</li>
+                    <li>4. 為什麼會積碳卡死？ -> 因現場粉塵未被有效過濾。</li>
+                    <li>5. 為什麼未有效過濾？ -> 因防塵網已連續 3 個月未進行更換與清潔。</li>
+                </ul><br>
+                <p><b>三、短期對策</b><br>現場維修人員已於 14:35 緊急更換全新散熱風扇及防塵網，並重置警報系統，14:45 產線全數恢復運轉。</p><br>
+                <p><b>四、長期預防案</b><br>將防塵網更換與風扇轉速點檢納入「每週二設備一級保養清單」，並由領班進行雙重核簽確認。</p>`,
+                
+                `<h3><b>【AI 產出結果：自動手臂過熱異常分析摘要】</b></h3><br>
+                <p><b>1. 現象描述</b><br>3號線之機械手臂於昨日 14:00 突發馬達過熱當機，導致產線作業中斷達 45 分鐘。經查，當時機台正處於高頻率取放作業模式。</p><br>
+                <p><b>2. 原因分析 (5 Why)</b></p>
+                <ul>
+                    <li>1. 為何馬達過熱？ -> 因為持續輸出超載電流。</li>
+                    <li>2. 為何輸出超載電流？ -> 因為手臂關節動作阻力異常變大。</li>
+                    <li>3. 為何阻力變大？ -> 因為潤滑油嚴重劣化，失去潤滑保護效果。</li>
+                    <li>4. 為何潤滑油劣化？ -> 因為中和廠近期趕單，機台連續滿載運轉 30 天未停機保養。</li>
+                </ul><br>
+                <p><b>3. 短期對策</b><br>立即停機手動排放舊油，實施管路清洗並注滿全新耐高溫合成潤滑油。測試運轉 10 分鐘，電流值已降回標準範圍。</p><br>
+                <p><b>4. 長期預防案</b><br>修訂維護 SOP：當單月總運轉工時累計超過 500 小時，系統應強制提前跳出「潤滑油更換保養」警示，禁止無極限超載生產。</p>`,
+
+                `<h3><b>【AI 產出結果：異常處置快報：機械手臂 E-204 停機事件】</b></h3><br>
+                <p><b>一、 現象描述</b><br>下午 2 點整，3號產線自動化區的機械手臂發出高溫警報，設備隨即強制斷電。此次停機事件導致生產中斷共計 45 分鐘，經現場排查確認馬達實際溫度並無過高。</p><br>
+                <p><b>二、 原因分析 (5 Why)</b></p>
+                <ul>
+                    <li>1. 為什麼會觸發停機？ -> 因為溫度感測器傳送了錯誤的高溫訊號。</li>
+                    <li>2. 為什麼感測器會誤報？ -> 因為感測器線路發生間歇性短路。</li>
+                    <li>3. 為什麼會短路？ -> 因為線路外皮老化且有明顯磨損痕跡。</li>
+                    <li>4. 為什麼會磨損？ -> 因為手臂運作時，線路長期與機殼發生干涉拉扯。</li>
+                    <li>5. 為什麼會干涉？ -> 原廠初始佈線時未預留足夠的活動緩衝長度。</li>
+                </ul><br>
+                <p><b>三、 短期對策</b><br>立刻切斷電源，將受損的感測器線路重新接線並包覆絕緣膠帶，同時更換一組全新感測器，確認訊號恢復正常。</p><br>
+                <p><b>四、 長期預防案</b><br>工程部將於本週末前，針對中和廠區內所有同型號之機械手臂進行全面走線安檢，並統一加裝防護波紋管以避免線路干涉拉扯。</p>`,
+
+                `<h3><b>【AI 產出結果：設備異常(8D)初步檢討報告】</b></h3><br>
+                <p><b>1. 現象描述</b><br>昨日 14:00，3號產線機械手臂於執行高負載取放任務時，因馬達過負荷導致嚴重發熱，最終觸發系統自我保護機制當機，中斷生產排程 45 分鐘。</p><br>
+                <p><b>2. 原因分析 (5 Why)</b></p>
+                <ul>
+                    <li>1. 為什麼馬達過負荷發熱？ -> 因為馬達實際輸出負載率高達 110%。</li>
+                    <li>2. 為什麼負載率會這麼高？ -> 因為運作軌跡的加速度參數設定過快。</li>
+                    <li>3. 為什麼設定過快？ -> 因為產線剛切換生產較重的新型號產品，但參數未隨之調整。</li>
+                    <li>4. 為什麼未隨之調整？ -> 現場工程師未嚴格依循「載重-速度」降速規範表進行切換。</li>
+                </ul><br>
+                <p><b>3. 短期對策</b><br>立即將該手臂的運行加速度參數調降 15%，並手動測試三個循環，確認馬達溫度下降並穩定在安全範圍內，產線隨即重啟。</p><br>
+                <p><b>4. 長期預防案</b><br>升級 MES 系統的配方防呆機制：未來輸入產品型號時，系統將自動根據產品重量鎖定機械手臂的最高運行速度，防止人為設定失誤。</p>`
+            ],
+            email: [
+                `<h3><b>【AI 產出結果：極急件－中和廠金屬原料交期延誤之補救要求】</b></h3><br>
+                <p>主旨：【極急件】關於訂單 #P-2026 關鍵原物料交期延誤及要求補救計畫</p><br>
+                <p>敬啟者：</p>
+                <p>您好。我是中和廠區的採購總監。針對貴司原訂於上週交付之關鍵零組件，由於全球物流塞港問題，至今仍未見入庫。此延誤已對我方生產排程造成極大衝擊，並面臨停線危機。</p>
+                <p>基於雙方長期合作夥伴關係，為將損失降至最低，請貴司高層即刻介入處理，並於收到此信後評估以下緊急替代方案：</p>
+                <table class="w-full border border-gray-300 text-sm mt-2 mb-2">
+                    <tr class="bg-gray-100 font-bold"><td class="p-2 border">方案別</td><td class="p-2 border">交貨方式</td><td class="p-2 border">要求交付期限</td></tr>
+                    <tr><td class="p-2 border">方案一</td><td class="p-2 border">全數改為特快空運</td><td class="p-2 border">本週五 (17:00前)</td></tr>
+                    <tr><td class="p-2 border">方案二</td><td class="p-2 border">首批 50% 空運，其餘維持海運</td><td class="p-2 border">首批需於本週三送達中和廠</td></tr>
+                </table>
+                <p>請於 <b>明日中午 12:00 前</b> 函覆貴司之決策與確切班機資訊。若未能如期補救，我方將依採購合約啟動違約損失索賠程序。期待貴司的迅速回應與協助。</p>
+                <p>順頌 商祺</p>`,
+                
+                `<h3><b>【AI 產出結果：交期延誤緊急協商通知】</b></h3><br>
+                <p>主旨：【重要通知】原物料交期延宕嚴重影響產線，請盡速提供解決方案</p><br>
+                <p>致 供應商經營團隊：</p>
+                <p>您好。由於近期物流狀況異常，貴司負責供應之關鍵零組件已逾期一週未達。此狀況已導致我方中和廠區多條組裝線處於停工待料狀態，若不立即處置，將嚴重影響我方對國際客戶的終端交期。</p>
+                <p>我們理解大環境的不可抗力因素，但仍需貴司積極展現解決誠意。請優先考慮以下補救方案：</p>
+                <ul class="list-disc pl-5 mt-2 mb-2">
+                    <li><b>緊急空運調度：</b>將目前已生產完畢之庫存，立刻轉以特快空運發送至台灣。我方願意吸收 30% 之空運價差，其餘由貴司負擔。</li>
+                    <li><b>分批交付計畫：</b>若無法一次滿足，請列出未來兩週內「每三日」可交付之最小批量明細。</li>
+                </ul>
+                <p>為了確保雙方資訊同步，我已安排於 <b>明日上午 09:30 召開線上緊急會議</b>，請貴司負責主管務必撥冗出席，共同擬定後續對策。感謝您的配合。</p>`,
+
+                `<h3><b>【AI 產出結果：【高階呈報】關鍵原物料未交貨之違約預警與協商】</b></h3><br>
+                <p>主旨：【高階呈報】中和廠關鍵零組件嚴重遲交之違約預警與空運協商</p><br>
+                <p>敬啟者：</p>
+                <p>您好，我是中和廠區採購總監。此信件旨在正式通知貴司，原訂上週送達的關鍵零組件至今仍未交付，我方產線已為此拉起紅色警戒，面臨全面停工的巨大風險。</p>
+                <p>鑒於事態嚴重，我們要求直接升級至貴司總經理層級進行對話。為避免進一步擴大雙方損失，我方提出以下唯一可接受之補救期程：</p>
+                <ul class="list-disc pl-5 mt-2 mb-2">
+                    <li>請貴司立即啟動「特快空運」專案，確保首批至少 40% 的料件於 <b>48小時內</b> 抵達我方中和廠區。</li>
+                    <li>衍生之額外空運費用，需請貴司全額吸收以彌補我方因停工造成之損失。</li>
+                </ul>
+                <p>請貴司於收到此信件後 <b>24 小時內</b> 給予明確之空運批次回覆。若未能於期限內提供具體對策，我方將被迫按採購合約第 8 條，正式啟動遲交違約金索賠程序。期盼貴方正視此危機，並迅速行動。</p>
+                <p>順頌 商祺</p>`,
+
+                `<h3><b>【AI 產出結果：關於訂單交期嚴重遞延之補救限期通知】</b></h3><br>
+                <p>主旨：【限期回覆】關鍵零組件交期嚴重遞延之補救計畫要求</p><br>
+                <p>致 供應商高階管理層：</p>
+                <p>您好。貴司一直是我方優良的合作夥伴，但本次關鍵金屬料件的嚴重延遲（已逾期一週），已直接造成中和廠區生產排程過載與實質營運損失。為了維持雙方長期的合作互信，我們必須立即採取果斷行動。</p>
+                <p>請貴司經營團隊即刻介入，並於 <b>今日下班前 (18:00)</b> 以正式信函回覆以下兩點要求：</p>
+                <ul class="list-disc pl-5 mt-2 mb-2">
+                    <li><b>一、空運追料計畫：</b>請提供未來三日內，能立即安排特快空運抵達台灣的具體數量與航班資訊，我方急需此批料件恢復生產。</li>
+                    <li><b>二、真因分析與對策：</b>針對此次塞港導致的嚴重衝擊，請提出貴司的真因分析與後續長期預防對策，以避免未來重蹈覆轍。</li>
+                </ul>
+                <p>此次事件對我方影響甚鉅，懇請貴司以「特急件」層級進行跨部門協調與處理。我們期待收到您積極且具體的回覆方案。</p>
+                <p>謝謝。</p>`
+            ]
+        };
+
         function triggerSandboxAI() {
             const outBox = document.getElementById('ai-output-box');
             const outContent = document.getElementById('ai-output-content');
-            outBox.classList.remove('hidden');
-            outContent.innerHTML = "正在調用 Gemini AI 引擎分析中... (7秒後產出)";
             
+            const t = document.getElementById('input-t').value.trim();
+            if(!t) {
+                alert("【核心錯誤】PTCF 框架中，『T - 任務』為絕對不可或缺的核心要素，請務必輸入具體的動詞或指令！");
+                return;
+            }
+
+            // 顯示動態進度與載入畫面
+            outBox.classList.remove('hidden');
+            outContent.innerHTML = `
+                <div class="p-8 text-center space-y-4 animate-pulse">
+                    <div class="text-indigo-600 font-black text-xl">正在調用 Gemini AI 引擎分析中...</div>
+                    <div class="text-gray-500 text-sm">PTCF 提示詞矩陣已發送，系統正在深度結構化您的需求，請稍候約 7 秒...</div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 50%"></div>
+                    </div>
+                </div>`;
+            outBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // 模擬真實的 7 秒 AI 運算耗時
             setTimeout(() => {
-                const list = responses[currentActiveSandboxTopic];
-                outContent.innerHTML = list[Math.floor(Math.random() * list.length)];
-            }, 7000); 
+                const responses = dynamicSimulatedResponses[currentActiveSandboxTopic];
+                const randomIndex = Math.floor(Math.random() * responses.length);
+                const selectedResponse = responses[randomIndex];
+                
+                outContent.innerHTML = `<div class="prose max-w-none text-gray-800 space-y-2 animate-fade-in">${selectedResponse}</div>`;
+            }, 7000);
         }
+
+        // 初始化填入第一個範例題目的資料
+        selectSandboxTopic('jd');
+
     </script>
 </body>
 </html>
