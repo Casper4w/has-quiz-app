@@ -200,7 +200,10 @@
                     <div class="bg-indigo-950 p-4 rounded-xl space-y-3">
                         <label class="block text-sm font-bold text-indigo-300">步驟 1：選擇要產出結果的實務題目範本</label>
                         <div class="flex flex-wrap gap-2">
-                            <button onclick="selectSandboxTopic('jd')" id="btn-topic-jd" class="topic-btn px-4 py-2 rounded-lg text-sm font-bold bg-indigo-600 text-white shadow">
+                            <button onclick="selectSandboxTopic('hr')" id="btn-topic-hr" class="topic-btn px-4 py-2 rounded-lg text-sm font-bold bg-indigo-600 text-white shadow">
+                                👥 撰寫【招募技術員】社群貼文
+                            </button>
+                            <button onclick="selectSandboxTopic('jd')" id="btn-topic-jd" class="topic-btn px-4 py-2 rounded-lg text-sm font-bold bg-indigo-800 text-indigo-300 hover:bg-indigo-700 hover:text-white">
                                 📝 撰寫【現場操作員】工作說明書
                             </button>
                             <button onclick="selectSandboxTopic('report')" id="btn-topic-report" class="topic-btn px-4 py-2 rounded-lg text-sm font-bold bg-indigo-800 text-indigo-300 hover:bg-indigo-700 hover:text-white">
@@ -223,11 +226,11 @@
                         </div>
                         <div class="space-y-1">
                             <label class="block text-xs font-bold text-green-300">C - 背景資訊 (Context)</label>
-                            <textarea id="input-c" rows="3" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+                            <textarea id="input-c" rows="4" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
                         </div>
                         <div class="space-y-1">
                             <label class="block text-xs font-bold text-purple-300">F - 格式 (Format)</label>
-                            <textarea id="input-f" rows="3" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+                            <textarea id="input-f" rows="4" class="w-full p-3 bg-indigo-950 border border-indigo-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
                         </div>
                     </div>
 
@@ -443,6 +446,17 @@
         // ==========================================
         const ptcfData = [
             {
+                // 新增的人資 HR 範例，並排在第一位
+                id: 'hr',
+                tag: '#人力資源(HR)專員',
+                icon: '👥',
+                filename: 'hr_recruitment_prompt.txt',
+                p: '你是一位在傳統製造業擁有多年招募與組織發展經驗的資深人力資源 (HR) 專員。',
+                t: '請幫我針對「自動化機台操作員」撰寫一份要在 Facebook 地方社團發布的招募貼文。',
+                c: '中和廠區近期擴編，我們提供完善的線上數位培訓系統與 TTQS 認證升遷管道。希望能吸引想轉換跑道、無經驗的在地人才。',
+                f: '語氣需活潑有朝氣，多用表情符號。請分段列出「工作亮點」、「條件要求」及「應徵方式」。'
+            },
+            {
                 id: 'prod',
                 tag: '#生產製造部主管',
                 icon: '⚙️',
@@ -467,7 +481,7 @@
                 tag: '#採購物流專員',
                 icon: '📦',
                 filename: 'procurement_negotiation_prompt.txt',
-                p: '你是一位擅長供應鏈談判、在精密樂器與零件製造供應鏈擁有豐富經驗的採購專員。',
+                p: '你是一位擅長供應鏈談判、在精密零件製造供應鏈擁有豐富經驗的採購專員。',
                 t: '請幫我起草一封給核心金屬原料供應商的正式催貨與交期協商信件。',
                 c: '該供應商原定於5日前交付關鍵金屬原物料，但至今仍未出貨，已嚴重威脅到我們下週主要線別的排程。我們需要他們在48小時內提出具體特快補救方案，否則將依合約評估損失。',
                 f: '語氣需堅定且符合專業商務禮儀，並明確標示出我方要求的「回覆截止時間點」。'
@@ -485,6 +499,12 @@
         ];
 
         const sandboxTopics = {
+            hr: {
+                p: "你是一位具備創新思維、擁有 TTQS 認證推動經驗的中和廠區人資招募專員。",
+                t: "請幫我撰寫一篇要在 Facebook 招募社團發布的【自動化機台操作技術員】徵才貼文。",
+                c: "中和廠區近期導入新一代自動化產線，工作環境乾淨無塵。我們希望強調「無經驗可、透過 104 企業大師提供完整線上培訓、升遷透明」。",
+                f: "語氣需要活潑有朝氣，多用表情符號。請分段列出「工作亮點」、「條件要求」及「應徵方式」。"
+            },
             jd: {
                 p: "你是一位專精於傳統製造業轉型、基層職能分析的廠區組織發展顧問。",
                 t: "請幫我全新產出一份【自動化機台操作現場技術員】工作說明書 (Job Description)。",
@@ -542,12 +562,13 @@
             roleContainer.appendChild(btn);
         });
 
-        renderPtcfPrompt('prod'); // 預設渲染生產部門範例
+        // 預設渲染新增的 HR 部門範例
+        renderPtcfPrompt('hr'); 
 
         // ==========================================
         // 沙盒互動控制邏輯 (動態模擬模式 - 4個版本)
         // ==========================================
-        let currentActiveSandboxTopic = 'jd';
+        let currentActiveSandboxTopic = 'hr';
 
         function selectSandboxTopic(topicKey) {
             currentActiveSandboxTopic = topicKey;
@@ -568,8 +589,49 @@
             document.getElementById('ai-output-box').classList.add('hidden');
         }
 
-        // 動態模擬回應資料庫 (包含中和廠區背景的完整4個版本內容)
+        // 動態模擬回應資料庫 (包含 HR 招募貼文與中和廠區背景的完整4個版本內容)
         const dynamicSimulatedResponses = {
+            hr: [
+                `<h3><b>【AI 產出結果：自動化技術員招募貼文 - 版本A】</b></h3><br>
+                <p>🚀 <b>【尋找未來的智慧製造之星！中和廠區擴編急徵】</b> 🚀</p>
+                <p>想進入穩定的科技製造業，卻擔心自己沒有相關經驗嗎？別擔心！中和廠區全新一代自動化產線正式啟用，現在就等你來加入我們！🤖✨</p><br>
+                <p>🌟 <b>【三大心動亮點】</b></p>
+                <p>✅ <b>零經驗也 OK：</b> 我們透過「104 企業大師」提供超完整的線上數位培訓，手把手帶你從零學起！</p>
+                <p>✅ <b>環境超優質：</b> 告別傳統工廠印象，乾淨無塵的冷氣房工作環境，讓你舒舒服服上班！</p>
+                <p>✅ <b>升遷看得到：</b> 導入國家級 TTQS 認證人才發展體系，表現好、學得快，升遷調薪絕對透明公正！📈</p><br>
+                <p>📌 <b>【條件要求】</b><br>只要你有一顆肯學習的心、具備基本團隊溝通能力，高中職畢業即可挑戰！</p><br>
+                <p>👉 <b>【應徵方式】</b><br>心動不如馬上行動！立刻點擊下方連結投遞履歷，我們的人資專員會盡快與您聯繫安排面試喔！👇<br>🔗 [報名連結請點我]</p>`,
+
+                `<h3><b>【AI 產出結果：自動化技術員招募貼文 - 版本B】</b></h3><br>
+                <p>✨ <b>【告別傳統工廠！中和廠區冷氣房招募中】</b> ✨</p>
+                <p>想要一份環境舒適、收入穩定又有發展性的好工作嗎？機會來了！我們中和廠區正大規模招募【自動化機台操作技術員】！🏭💼</p><br>
+                <p>🎯 <b>【為什麼要加入我們？】</b></p>
+                <p>1️⃣ <b>無痛轉職最佳選擇：</b> 真的不需要經驗！我們擁有完整的 TTQS 認證培訓計畫，只要你肯學，我們就敢教！</p>
+                <p>2️⃣ <b>工作環境超加分：</b> 誰說做製造業只能滿頭大汗？全新導入自動化產線，冷氣房無塵環境等你來體驗！❄️</p>
+                <p>3️⃣ <b>數位化學習資源：</b> 隨時隨地透過 104 企業大師線上學習系統精進自己，不僅賺錢更能賺技能！📱</p><br>
+                <p>📝 <b>【我們需要這樣的你】</b><br>不限科系，只要細心負責、配合度高，歡迎所有想挑戰高薪與穩定發展的夥伴！</p><br>
+                <p>🔥 <b>名額有限，火速應徵！</b><br>加入我們，一起成為智慧製造的推手！點擊下方留言「我想了解」，小編會私訊您面試資訊喔！💬</p>`,
+
+                `<h3><b>【AI 產出結果：自動化技術員招募貼文 - 版本C】</b></h3><br>
+                <p>💡 <b>【無經驗的你，也能成為自動化大廠的一員！】</b> 💡</p>
+                <p>常常羨慕別人在高科技、乾淨的環境上班嗎？現在，中和廠區為你打開這扇大門！我們正在尋找不怕挑戰的【自動化機台操作技術員】！💪</p><br>
+                <p>🌈 <b>【工作亮點一次看】</b></p>
+                <p>🔹 <b>升遷不再靠年資：</b> 公司擁有 TTQS 認證的透明升遷管道，只要能力達標，加薪升職由你自己決定！</p>
+                <p>🔹 <b>不怕學不會：</b> 報到即開通 104 企業大師專屬帳號，超豐富線上培訓課程，讓你輕鬆掌握自動化機台操作技巧！📚</p>
+                <p>🔹 <b>告別髒亂熱：</b> 我們的產線全新升級，不僅乾淨明亮，更是全天候空調開放！🌬️</p><br>
+                <p>🔍 <b>【條件要求】</b><br>只需要高中職學歷，無經驗可！只要你有責任感，願意跟著公司一起成長茁壯！</p><br>
+                <p>📲 <b>【應徵看這邊】</b><br>別讓好機會溜走！準備好你的履歷，直接私訊粉絲團，或點擊連結 [應徵網址]，我們隨時歡迎你！</p>`,
+
+                `<h3><b>【AI 產出結果：自動化技術員招募貼文 - 版本D】</b></h3><br>
+                <p>🔥 <b>【擴廠急徵！加入中和廠自動化團隊，好薪情等你拿】</b> 🔥</p>
+                <p>還在找尋穩定有保障的工作？來來來！中和廠區自動化產線大舉擴編，需要有活力、想拼搏的你加入我們【機台操作技術員】的行列！⚙️</p><br>
+                <p>🏆 <b>【加入我們的超強優勢】</b></p>
+                <p>✅ <b>新手友善：</b> 完全零經驗？沒問題！公司結合 104 企業大師平台，提供循序漸進的線上與實體數位培訓！</p>
+                <p>✅ <b>環境舒適：</b> 拋開傳統製造業的刻板印象，無塵、乾淨、有冷氣的智慧產線，給你最棒的工作體驗！</p>
+                <p>✅ <b>TTQS 掛保證：</b> 國家認證的優質人才發展體系，透明的績效與晉升制度，讓你的努力絕對被看見！🌟</p><br>
+                <p>🎯 <b>【條件要求】</b><br>只要你願意學習新事物，具備基本識字與電腦操作能力，我們雙手歡迎！</p><br>
+                <p>🏃‍♂️💨 <b>【立即應徵】</b><br>名額有限，額滿為止！趕快點擊下方「申請按鈕」投遞履歷，開啟你的智慧製造職涯吧！👇</p>`
+            ],
             jd: [
                 `<h3><b>【AI 產出結果：自動化設備維護技術員 工作說明書】</b></h3><br>
                 <p><b>1. 職責範圍 (Responsibilities)</b></p>
@@ -654,7 +716,7 @@
                 <ul>
                     <li>1. 為什麼停機？ -> 因主伺服馬達外殼溫度超過 85°C 觸發保護。</li>
                     <li>2. 為什麼溫度過高？ -> 因內部散熱風扇轉速異常降低。</li>
-                    <li>3. 為什麼風扇轉速降低？ -> 因風扇軸承積碳卡死.</li>
+                    <li>3. 為什麼風扇轉速降低？ -> 因風扇軸承積碳卡死。</li>
                     <li>4. 為什麼會積碳卡死？ -> 因現場粉塵未被有效過濾。</li>
                     <li>5. 為什麼未有效過濾？ -> 因防塵網已連續 3 個月未進行更換與清潔。</li>
                 </ul><br>
@@ -764,7 +826,7 @@
             outContent.innerHTML = `
                 <div class="p-8 text-center space-y-4 animate-pulse">
                     <div class="text-indigo-600 font-black text-xl">正在調用 Gemini AI 引擎分析中...</div>
-                    <div class="text-gray-500 text-sm">PTCF 提示詞矩陣已發送，系統正在深度結構化您的需求，請稍候...</div>
+                    <div class="text-gray-500 text-sm">PTCF 提示詞矩陣已發送，系統正在深度結構化您的需求，請稍候約 7 秒...</div>
                     <div class="w-full bg-gray-200 rounded-full h-2.5">
                         <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 50%"></div>
                     </div>
@@ -781,8 +843,8 @@
             }, 7000);
         }
 
-        // 初始化填入第一個範例題目的資料
-        selectSandboxTopic('jd');
+        // 初始化填入新增的 HR 範例題目的資料
+        selectSandboxTopic('hr');
 
     </script>
 </body>
